@@ -1,5 +1,5 @@
 import React from 'react';
-import { Film, Play, Sparkles } from 'lucide-react';
+import { Film, Play, Sparkles, Smartphone, Zap, PhoneCall, Heart } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockData';
 
 export default function Hero({ onBookClick }) {
@@ -30,7 +30,7 @@ export default function Hero({ onBookClick }) {
 
       <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
         
-        {/* Creator Pill Badge - Fixed compact responsive typography */}
+        {/* Creator Pill Badge */}
         <div style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -92,30 +92,41 @@ export default function Hero({ onBookClick }) {
           </a>
         </div>
 
-        {/* Info Bar */}
+        {/* Balanced Symmetrical 4-Card Info Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-          gap: '1.2rem',
-          maxWidth: '800px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+          gap: '1rem',
+          maxWidth: '850px',
           margin: '0 auto',
-          padding: '1.2rem',
+          padding: '1.2rem 1rem',
           borderRadius: 'var(--radius-md)',
-          background: 'rgba(16, 16, 22, 0.8)',
-          backdropFilter: 'blur(12px)',
+          background: 'rgba(16, 16, 22, 0.85)',
+          backdropFilter: 'blur(16px)',
           border: '1px solid var(--border-silver)'
         }}>
-          <div>
-            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.4rem', fontWeight: '800' }}>Instagram Ready</div>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Vertical 9:16 Reels</div>
+          <div style={{ padding: '0.6rem 0.4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <Smartphone size={20} color="var(--silver-light)" />
+            <div style={{ fontFamily: 'var(--font-body)', fontWeight: '700', fontSize: '0.95rem', color: '#fff' }}>Instagram Ready</div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Vertical 9:16 Reels</div>
           </div>
-          <div>
-            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.4rem', fontWeight: '800' }}>Fast Delivery</div>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Quick Turnaround</div>
+
+          <div style={{ padding: '0.6rem 0.4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <Zap size={20} color="var(--silver-light)" />
+            <div style={{ fontFamily: 'var(--font-body)', fontWeight: '700', fontSize: '0.95rem', color: '#fff' }}>Fast Delivery</div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>24-48 Hr Delivery</div>
           </div>
-          <div>
-            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.4rem', fontWeight: '800' }}>Direct Contact</div>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Talk to Amit & Sahil</div>
+
+          <div style={{ padding: '0.6rem 0.4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <Heart size={20} color="var(--silver-light)" />
+            <div style={{ fontFamily: 'var(--font-body)', fontWeight: '700', fontSize: '0.95rem', color: '#fff' }}>Real Moments</div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>100% Candid Vibe</div>
+          </div>
+
+          <div style={{ padding: '0.6rem 0.4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <PhoneCall size={20} color="var(--silver-light)" />
+            <div style={{ fontFamily: 'var(--font-body)', fontWeight: '700', fontSize: '0.95rem', color: '#fff' }}>Direct Talk</div>
+            <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Amit & Sahil</div>
           </div>
         </div>
 
