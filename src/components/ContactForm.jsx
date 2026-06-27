@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, Calendar, User, MessageSquare, CheckCircle, Send } from 'lucide-react';
+import { Phone, Mail, Calendar, User, MessageSquare, CheckCircle, Send, MessageCircle } from 'lucide-react';
 import { BRAND_INFO, SERVICES } from '../data/mockData';
 
 const InstagramIcon = ({ size = 18 }) => (
@@ -7,13 +7,6 @@ const InstagramIcon = ({ size = 18 }) => (
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-  </svg>
-);
-
-const YoutubeIcon = ({ size = 18 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
   </svg>
 );
 
@@ -57,10 +50,19 @@ export default function ContactForm({ selectedService, setSelectedService }) {
     return Object.keys(newErrors).length === 0;
   };
 
+  const sendWhatsAppInquiry = () => {
+    const text = `Hi Devine Lens! 👋%0A%0AI would like to inquire about an event reel shoot.%0A%0A📌 *Details:*%0A• *Name:* ${encodeURIComponent(formData.fullName)}%0A• *Phone:* ${encodeURIComponent(formData.phone)}%0A• *Category:* ${encodeURIComponent(formData.category)}%0A• *Target Date:* ${encodeURIComponent(formData.targetDate || 'Not specified')}%0A• *Message:* ${encodeURIComponent(formData.message || 'None')}`;
+    
+    // WhatsApp URL to Amit's number
+    const whatsappUrl = `https://wa.me/917974616093?text=${text}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
       setSubmitted(true);
+      sendWhatsAppInquiry();
     }
   };
 
@@ -76,7 +78,7 @@ export default function ContactForm({ selectedService, setSelectedService }) {
             Book Your Dates With Devine Lens
           </h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '580px', margin: '0 auto', fontSize: '0.95rem' }}>
-            Fill out the form below or call Amit & Sahil directly to check date availability for your event.
+            Fill out the form below or connect directly on WhatsApp / Call with Amit & Sahil.
           </p>
         </div>
 
@@ -92,7 +94,7 @@ export default function ContactForm({ selectedService, setSelectedService }) {
               backdropFilter: 'blur(16px)'
             }}>
               <h3 className="font-heading" style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '1.2rem' }}>
-                Direct Contact
+                Direct Call / WhatsApp
               </h3>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -118,7 +120,8 @@ export default function ContactForm({ selectedService, setSelectedService }) {
                       width: '40px', height: '40px',
                       borderRadius: '50%',
                       background: 'var(--silver-gradient)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0
                     }}>
                       <Phone size={18} color="#09090b" />
                     </div>
@@ -160,7 +163,7 @@ export default function ContactForm({ selectedService, setSelectedService }) {
             backdropFilter: 'blur(16px)'
           }}>
             {submitted ? (
-              <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+              <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
                 <div style={{
                   width: '64px', height: '64px',
                   borderRadius: '50%',
@@ -171,17 +174,27 @@ export default function ContactForm({ selectedService, setSelectedService }) {
                   <CheckCircle size={36} color="#09090b" />
                 </div>
                 <h3 className="font-heading" style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '0.4rem' }}>
-                  Inquiry Sent!
+                  Inquiry Sent via WhatsApp!
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-                  Thank you, <strong>{formData.fullName}</strong>. Amit & Sahil will connect with you via call / WhatsApp shortly!
+                  Thank you, <strong>{formData.fullName}</strong>. Your inquiry details for <strong>{formData.category}</strong> have been opened in WhatsApp. Amit & Sahil will respond shortly!
                 </p>
-                <button 
-                  onClick={() => setSubmitted(false)}
-                  className="btn-outline-silver"
-                >
-                  Submit Another Inquiry
-                </button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                  <button 
+                    onClick={() => sendWhatsAppInquiry()}
+                    className="btn-silver"
+                    style={{ width: '100%', justifyContent: 'center' }}
+                  >
+                    <MessageCircle size={18} /> Resend on WhatsApp
+                  </button>
+                  <button 
+                    onClick={() => setSubmitted(false)}
+                    className="btn-outline-silver"
+                    style={{ width: '100%', justifyContent: 'center' }}
+                  >
+                    Fill Another Form
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
@@ -320,7 +333,7 @@ export default function ContactForm({ selectedService, setSelectedService }) {
                 </div>
 
                 <button type="submit" className="btn-silver" style={{ width: '100%', justifyContent: 'center', marginTop: '0.4rem', fontSize: '0.95rem', padding: '0.9rem' }}>
-                  <Send size={16} /> Send Inquiry
+                  <Send size={16} /> Send WhatsApp Inquiry
                 </button>
 
               </form>
