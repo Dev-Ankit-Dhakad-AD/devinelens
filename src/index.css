@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #08080a;
+  --bg-secondary: #101014;
+  --bg-card: rgba(20, 20, 26, 0.8);
+  --bg-glass: rgba(16, 16, 22, 0.75);
+
+  --silver-primary: #e2e8f0;
+  --silver-light: #ffffff;
+  --silver-dark: #94a3b8;
+  --silver-gradient: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #64748b 100%);
+  --silver-glow: rgba(226, 232, 240, 0.25);
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-silver: #e2e8f0;
+
+  --border-silver: rgba(226, 232, 240, 0.25);
+  --border-glass: rgba(255, 255, 255, 0.08);
+
+  --font-brand: 'Cinzel', serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(226, 232, 240, 0.02) 0%, transparent 40%);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(226, 232, 240, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--silver-primary);
+}
+
+/* Typography Utilities */
+.font-brand {
+  font-family: var(--font-brand);
+  text-transform: uppercase;
+}
+.font-heading {
+  font-family: var(--font-heading);
+}
+.text-silver-gradient {
+  background: var(--silver-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.silver-glow-text {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+}
+
+/* Glassmorphism & Cards */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-silver);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.silver-border-box {
+  position: relative;
+  border: 1px solid var(--border-silver);
+  transition: all 0.4s ease;
+}
+.silver-border-box:hover {
+  border-color: var(--silver-primary);
+  box-shadow: 0 0 25px var(--silver-glow);
+  transform: translateY(-4px);
+}
+
+/* Luxury Buttons - Metallic Chrome */
+.btn-silver {
+  background: var(--silver-gradient);
+  color: #09090b;
+  font-weight: 800;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+.btn-silver:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+}
+
+.btn-outline-silver {
+  background: transparent;
+  color: var(--silver-light);
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--silver-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-outline-silver:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
