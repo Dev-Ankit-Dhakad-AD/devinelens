@@ -9,7 +9,7 @@ export default function Navbar({ onBookClick }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -33,18 +33,18 @@ export default function Navbar({ onBookClick }) {
         position: 'fixed',
         top: 0, left: 0, right: 0,
         zIndex: 1000,
-        padding: scrolled ? '0.7rem 0' : '1.2rem 0',
-        transition: 'all 0.4s ease',
-        background: scrolled ? 'rgba(8, 8, 10, 0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(226, 232, 240, 0.2)' : 'none'
+        padding: scrolled ? '0.6rem 0' : '1rem 0',
+        transition: 'all 0.3s ease',
+        background: scrolled ? 'rgba(8, 8, 10, 0.95)' : 'rgba(8, 8, 10, 0.6)',
+        backdropFilter: 'blur(16px)',
+        borderBottom: scrolled ? '1px solid rgba(226, 232, 240, 0.2)' : '1px solid transparent'
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         
         {/* Brand Emblem Logo */}
         <a href="#hero" style={{ textDecoration: 'none' }}>
-          <Logo size={42} showText={true} />
+          <Logo size={36} showText={true} />
         </a>
 
         {/* Desktop Navigation */}
@@ -58,11 +58,8 @@ export default function Navbar({ onBookClick }) {
                 textDecoration: 'none',
                 fontSize: '0.95rem',
                 fontWeight: '500',
-                letterSpacing: '0.5px',
-                transition: 'color 0.3s ease'
+                letterSpacing: '0.5px'
               }}
-              onMouseEnter={(e) => e.target.style.color = 'var(--silver-light)'}
-              onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}
             >
               {link.name}
             </a>
@@ -70,23 +67,26 @@ export default function Navbar({ onBookClick }) {
         </nav>
 
         {/* Action Button & Quick Contact */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <button onClick={onBookClick} className="btn-silver" style={{ padding: '0.6rem 1.4rem', fontSize: '0.88rem' }}>
-            <Sparkles size={16} /> Book Reel Shoot
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <button onClick={onBookClick} className="btn-silver desktop-btn" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>
+            <Sparkles size={15} /> Book Shoot
           </button>
           
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
-              background: 'transparent',
+              background: 'rgba(255,255,255,0.05)',
               border: '1px solid var(--border-silver)',
               color: 'var(--silver-light)',
               padding: '0.5rem',
               borderRadius: 'var(--radius-sm)',
               cursor: 'pointer',
               display: 'flex',
-              alignItems: 'center'
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '42px',
+              height: '42px'
             }}
             aria-label="Toggle Menu"
           >
@@ -100,13 +100,14 @@ export default function Navbar({ onBookClick }) {
         <div style={{
           position: 'absolute',
           top: '100%', left: 0, right: 0,
-          background: 'rgba(10, 10, 14, 0.98)',
-          backdropFilter: 'blur(20px)',
+          background: 'rgba(8, 8, 10, 0.98)',
+          backdropFilter: 'blur(24px)',
           borderBottom: '1px solid var(--border-silver)',
-          padding: '1.5rem',
+          padding: '1.5rem 1.2rem',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1.2rem'
+          gap: '1.2rem',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.8)'
         }}>
           {navLinks.map((link) => (
             <a 
@@ -118,19 +119,33 @@ export default function Navbar({ onBookClick }) {
                 textDecoration: 'none',
                 fontSize: '1.1rem',
                 fontWeight: '600',
-                paddingBottom: '0.5rem',
-                borderBottom: '1px solid rgba(255,255,255,0.05)'
+                paddingBottom: '0.6rem',
+                borderBottom: '1px solid rgba(255,255,255,0.08)'
               }}
             >
               {link.name}
             </a>
           ))}
-          <div style={{ paddingTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-            <div style={{ color: 'var(--silver-light)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Direct Call Creators</div>
-            <a href={`tel:${BRAND_INFO.owners[0].rawPhone}`} style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+
+          <button 
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onBookClick();
+            }} 
+            className="btn-silver" 
+            style={{ width: '100%', marginTop: '0.5rem' }}
+          >
+            <Sparkles size={16} /> Book Your Shoot Now
+          </button>
+
+          <div style={{ paddingTop: '0.8rem', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+            <div style={{ color: 'var(--silver-light)', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: '700' }}>
+              Direct Call Creators
+            </div>
+            <a href={`tel:${BRAND_INFO.owners[0].rawPhone}`} style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
               <Phone size={16} color="var(--silver-light)" /> Amit: {BRAND_INFO.owners[0].phone}
             </a>
-            <a href={`tel:${BRAND_INFO.owners[1].rawPhone}`} style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <a href={`tel:${BRAND_INFO.owners[1].rawPhone}`} style={{ color: '#fff', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
               <Phone size={16} color="var(--silver-light)" /> Sahil: {BRAND_INFO.owners[1].phone}
             </a>
           </div>
@@ -140,6 +155,10 @@ export default function Navbar({ onBookClick }) {
       <style>{`
         @media (min-width: 768px) {
           .desktop-nav { display: flex !important; }
+          .desktop-btn { display: inline-flex !important; }
+        }
+        @media (max-width: 767px) {
+          .desktop-btn { display: none !important; }
         }
       `}</style>
     </header>
