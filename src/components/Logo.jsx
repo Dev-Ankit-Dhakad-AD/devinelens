@@ -1,20 +1,16 @@
 import React from 'react';
 
-export default function Logo({ size = 48, showText = true }) {
+export default function Logo({ size = 42, showText = true }) {
   return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', cursor: 'pointer' }}>
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer' }}>
       {/* SVG Emblem matching the uploaded logo */}
-      <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
         <defs>
           <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#ffffff" />
             <stop offset="50%" stopColor="#cbd5e1" />
             <stop offset="100%" stopColor="#64748b" />
           </linearGradient>
-          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
         </defs>
 
         {/* Outer Metallic Ring */}
@@ -57,14 +53,20 @@ export default function Logo({ size = 48, showText = true }) {
 
       {showText && (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span className="font-brand text-silver-gradient" style={{ fontSize: '1.35rem', fontWeight: '800', letterSpacing: '2px', lineHeight: '1' }}>
+          <span className="font-brand text-silver-gradient" style={{ fontSize: '1.2rem', fontWeight: '800', letterSpacing: '1.5px', lineHeight: '1.1' }}>
             DEVINE LENS
           </span>
-          <span style={{ fontSize: '0.62rem', color: 'var(--text-secondary)', letterSpacing: '1.5px', textTransform: 'uppercase', marginTop: '3px' }}>
+          <span className="logo-subtitle" style={{ fontSize: '0.6rem', color: 'var(--text-secondary)', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '2px' }}>
             CAPTURING SPECIAL MOMENTS
           </span>
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 480px) {
+          .logo-subtitle { display: none !important; }
+        }
+      `}</style>
     </div>
   );
 }

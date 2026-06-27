@@ -12,7 +12,7 @@ export default function Hero({ onBookClick }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '6.5rem',
+        paddingTop: 'clamp(8rem, 16vh, 10rem)',
         paddingBottom: '3.5rem',
         overflow: 'hidden'
       }}
@@ -30,7 +30,7 @@ export default function Hero({ onBookClick }) {
 
       <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
         
-        {/* Creator Badge */}
+        {/* Creator Badge - Ensured ample margin top and shrink protection */}
         <div style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -38,12 +38,13 @@ export default function Hero({ onBookClick }) {
           padding: '0.4rem 1rem',
           borderRadius: 'var(--radius-full)',
           border: '1px solid var(--border-silver)',
-          background: 'rgba(16, 16, 22, 0.85)',
+          background: 'rgba(16, 16, 22, 0.9)',
           marginBottom: '1.2rem',
-          maxWidth: '100%'
+          maxWidth: '100%',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
         }}>
           <Sparkles size={14} color="var(--silver-light)" style={{ flexShrink: 0 }} />
-          <span style={{ fontSize: '0.78rem', color: 'var(--silver-light)', fontWeight: '600', letterSpacing: '1px' }}>
+          <span style={{ fontSize: '0.75rem', color: 'var(--silver-light)', fontWeight: '600', letterSpacing: '1px' }}>
             INSTAGRAM REEL & EVENT CREATORS
           </span>
         </div>
@@ -52,7 +53,7 @@ export default function Hero({ onBookClick }) {
         <h1 className="font-brand text-silver-gradient silver-glow-text" style={{
           fontSize: 'clamp(2.2rem, 8vw, 5.2rem)',
           fontWeight: '900',
-          lineHeight: '1.1',
+          lineHeight: '1.15',
           letterSpacing: '2px',
           marginBottom: '0.8rem'
         }}>
@@ -105,15 +106,15 @@ export default function Hero({ onBookClick }) {
           border: '1px solid var(--border-silver)'
         }}>
           <div>
-            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.5rem', fontWeight: '800' }}>Instagram Ready</div>
+            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.4rem', fontWeight: '800' }}>Instagram Ready</div>
             <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Vertical 9:16 Reels</div>
           </div>
           <div>
-            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.5rem', fontWeight: '800' }}>Fast Delivery</div>
+            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.4rem', fontWeight: '800' }}>Fast Delivery</div>
             <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Quick Turnaround</div>
           </div>
           <div>
-            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.5rem', fontWeight: '800' }}>Direct Contact</div>
+            <div className="font-brand text-silver-gradient" style={{ fontSize: '1.4rem', fontWeight: '800' }}>Direct Contact</div>
             <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Talk to Amit & Sahil</div>
           </div>
         </div>
