@@ -12,7 +12,7 @@ export default function Hero({ onBookClick }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 'clamp(8rem, 16vh, 10rem)',
+        paddingTop: 'clamp(9.5rem, 22vh, 12rem)',
         paddingBottom: '3.5rem',
         overflow: 'hidden'
       }}
@@ -30,22 +30,22 @@ export default function Hero({ onBookClick }) {
 
       <div className="container" style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
         
-        {/* Creator Badge - Ensured ample margin top and shrink protection */}
+        {/* Creator Pill Badge - Fixed compact responsive typography */}
         <div style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: '0.5rem',
-          padding: '0.4rem 1rem',
+          gap: '0.4rem',
+          padding: '0.35rem 0.9rem',
           borderRadius: 'var(--radius-full)',
           border: '1px solid var(--border-silver)',
-          background: 'rgba(16, 16, 22, 0.9)',
+          background: 'rgba(16, 16, 22, 0.92)',
           marginBottom: '1.2rem',
-          maxWidth: '100%',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
+          maxWidth: '95%',
+          boxShadow: '0 4px 14px rgba(0,0,0,0.6)'
         }}>
-          <Sparkles size={14} color="var(--silver-light)" style={{ flexShrink: 0 }} />
-          <span style={{ fontSize: '0.75rem', color: 'var(--silver-light)', fontWeight: '600', letterSpacing: '1px' }}>
-            INSTAGRAM REEL & EVENT CREATORS
+          <Sparkles size={13} color="var(--silver-light)" style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: 'clamp(0.68rem, 2.4vw, 0.78rem)', color: 'var(--silver-light)', fontWeight: '700', letterSpacing: '0.8px', whiteSpace: 'nowrap' }}>
+            EVENT & INSTAGRAM REEL CREATORS
           </span>
         </div>
 
